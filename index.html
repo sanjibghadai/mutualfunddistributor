@@ -373,19 +373,21 @@
   .calc-field{margin-bottom:26px}
   .calc-field label{
     display:flex;justify-content:space-between;align-items:baseline;
-    font-size:13.5px;color:#c9c3b0;margin-bottom:10px;letter-spacing:.02em;
+    font-size:13.5px;margin-bottom:10px;letter-spacing:.02em;
   }
-  .calc-field label .calc-val{color:var(--gold);font-weight:600;font-family:'Playfair Display',serif;font-size:15px}
+  .calc-field label .calc-label-text{color:#1f6b1f;font-weight:700}
   .calc-field input[type="range"]{
     width:100%;accent-color:var(--gold);height:4px;cursor:pointer;
   }
-  .calc-field input[type="number"]{
-    width:100%;padding:10px 12px;background:var(--ink);border:1px solid var(--rule);
-    border-radius:4px;color:#c9c3b0;font-family:inherit;font-size:14px;margin-top:8px;
+  .calc-field .calc-num{
+    width:130px;padding:8px 10px;background:#f3efe2;border:1px solid var(--rule);
+    border-radius:4px;color:#1a1a1a;font-family:'Playfair Display',serif;font-weight:700;
+    font-size:15px;text-align:right;
   }
   .calc-field input[type="number"]:focus,.calc-field input[type="range"]:focus-visible{
     outline:none;border-color:var(--gold);
   }
+  .calc-field .calc-num:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(60,176,67,.2)}
 .calc-result-box{
   background:rgba(10,35,66,.08);
   border:1px solid rgba(10,35,66,.25);
@@ -541,16 +543,16 @@
       <div class="calc-grid">
         <div>
           <div class="calc-field">
-            <label>Monthly Investment <span class="calc-val" id="sipAmountVal">₹5,000</span></label>
-            <input type="range" id="sipAmount" min="500" max="200000" step="500" value="5000" oninput="calcSIP()">
+            <label><span class="calc-label-text">Monthly Investment</span> <input type="number" class="calc-num" id="sipAmountNum" min="500" max="200000" step="500" value="5000" oninput="syncFromNum('sipAmount')"></label>
+            <input type="range" id="sipAmount" min="500" max="200000" step="500" value="5000" oninput="syncFromRange('sipAmount')">
           </div>
           <div class="calc-field">
-            <label>Investment Period <span class="calc-val" id="sipYearsVal">10 yrs</span></label>
-            <input type="range" id="sipYears" min="1" max="40" step="1" value="10" oninput="calcSIP()">
+            <label><span class="calc-label-text">Investment Period</span> <input type="number" class="calc-num" id="sipYearsNum" min="1" max="40" step="1" value="10" oninput="syncFromNum('sipYears')"></label>
+            <input type="range" id="sipYears" min="1" max="40" step="1" value="10" oninput="syncFromRange('sipYears')">
           </div>
           <div class="calc-field">
-            <label>Expected Annual Return <span class="calc-val" id="sipRateVal">12%</span></label>
-            <input type="range" id="sipRate" min="1" max="30" step="0.5" value="12" oninput="calcSIP()">
+            <label><span class="calc-label-text">Expected Annual Return</span> <input type="number" class="calc-num" id="sipRateNum" min="1" max="30" step="0.5" value="12" oninput="syncFromNum('sipRate')"></label>
+            <input type="range" id="sipRate" min="1" max="30" step="0.5" value="12" oninput="syncFromRange('sipRate')">
           </div>
         </div>
         <div class="calc-results">
@@ -567,20 +569,20 @@
       <div class="calc-grid">
         <div>
           <div class="calc-field">
-            <label>Total Investment <span class="calc-val" id="swpCorpusVal">₹10,00,000</span></label>
-            <input type="range" id="swpCorpus" min="50000" max="20000000" step="50000" value="1000000" oninput="calcSWP()">
+            <label><span class="calc-label-text">Total Investment</span> <input type="number" class="calc-num" id="swpCorpusNum" min="50000" max="20000000" step="50000" value="1000000" oninput="syncFromNum('swpCorpus')"></label>
+            <input type="range" id="swpCorpus" min="50000" max="20000000" step="50000" value="1000000" oninput="syncFromRange('swpCorpus')">
           </div>
           <div class="calc-field">
-            <label>Monthly Withdrawal <span class="calc-val" id="swpWithdrawalVal">₹8,000</span></label>
-            <input type="range" id="swpWithdrawal" min="500" max="500000" step="500" value="8000" oninput="calcSWP()">
+            <label><span class="calc-label-text">Monthly Withdrawal</span> <input type="number" class="calc-num" id="swpWithdrawalNum" min="500" max="500000" step="500" value="8000" oninput="syncFromNum('swpWithdrawal')"></label>
+            <input type="range" id="swpWithdrawal" min="500" max="500000" step="500" value="8000" oninput="syncFromRange('swpWithdrawal')">
           </div>
           <div class="calc-field">
-            <label>Expected Annual Return <span class="calc-val" id="swpRateVal">8%</span></label>
-            <input type="range" id="swpRate" min="1" max="30" step="0.5" value="8" oninput="calcSWP()">
+            <label><span class="calc-label-text">Expected Annual Return</span> <input type="number" class="calc-num" id="swpRateNum" min="1" max="30" step="0.5" value="8" oninput="syncFromNum('swpRate')"></label>
+            <input type="range" id="swpRate" min="1" max="30" step="0.5" value="8" oninput="syncFromRange('swpRate')">
           </div>
           <div class="calc-field">
-            <label>Withdrawal Period <span class="calc-val" id="swpYearsVal">15 yrs</span></label>
-            <input type="range" id="swpYears" min="1" max="40" step="1" value="15" oninput="calcSWP()">
+            <label><span class="calc-label-text">Withdrawal Period</span> <input type="number" class="calc-num" id="swpYearsNum" min="1" max="40" step="1" value="15" oninput="syncFromNum('swpYears')"></label>
+            <input type="range" id="swpYears" min="1" max="40" step="1" value="15" oninput="syncFromRange('swpYears')">
           </div>
         </div>
         <div class="calc-results">
@@ -608,14 +610,29 @@
     document.getElementById('panelSwp').classList.toggle('active', which==='swp');
   }
 
+  function syncFromRange(id){
+    document.getElementById(id+'Num').value = document.getElementById(id).value;
+    runCalc(id);
+  }
+  function syncFromNum(id){
+    const num = document.getElementById(id+'Num');
+    const range = document.getElementById(id);
+    let v = parseFloat(num.value);
+    if(isNaN(v)) return;
+    const min = parseFloat(range.min), max = parseFloat(range.max);
+    if(v < min) v = min;
+    if(v > max) v = max;
+    range.value = v;
+    runCalc(id);
+  }
+  function runCalc(id){
+    if(id.startsWith('sip')) calcSIP(); else calcSWP();
+  }
+
   function calcSIP(){
     const amount = parseFloat(document.getElementById('sipAmount').value);
     const years = parseFloat(document.getElementById('sipYears').value);
     const rate = parseFloat(document.getElementById('sipRate').value);
-
-    document.getElementById('sipAmountVal').textContent = fmtINR(amount);
-    document.getElementById('sipYearsVal').textContent = years + ' yrs';
-    document.getElementById('sipRateVal').textContent = rate + '%';
 
     const n = years * 12;
     const i = rate / 100 / 12;
@@ -638,11 +655,6 @@
     const withdrawal = parseFloat(document.getElementById('swpWithdrawal').value);
     const rate = parseFloat(document.getElementById('swpRate').value);
     const years = parseFloat(document.getElementById('swpYears').value);
-
-    document.getElementById('swpCorpusVal').textContent = fmtINR(corpus);
-    document.getElementById('swpWithdrawalVal').textContent = fmtINR(withdrawal);
-    document.getElementById('swpRateVal').textContent = rate + '%';
-    document.getElementById('swpYearsVal').textContent = years + ' yrs';
 
     const months = years * 12;
     const i = rate / 100 / 12;
@@ -725,11 +737,20 @@
     </select><br><br>
     <textarea id='fbText' placeholder='Write your feedback here...' rows='4'></textarea><br>
     <button id='submitBtn' onclick='addFb()'>Submit Feedback</button>
+    <div id='fbStatus' style="margin-top:10px;font-size:13px;min-height:18px"></div>
     <div id='fbList'></div>
   </div>
 </section>
 
 <footer>© 2026 Sanjib Ghadai — Financial Advisor &amp; Insurance Consultant</footer>
+<script>
+  // Define a safe placeholder immediately so the Submit button never throws
+  // "addFb is not defined" — this gets replaced once Firebase loads below.
+  window.addFb = function(){
+    const s = document.getElementById('fbStatus');
+    if (s) { s.style.color = '#e0a04a'; s.textContent = 'Still connecting to the feedback service — please wait a few seconds and click Submit again.'; }
+  };
+</script>
 <script type="module">
   // Import Firebase functions
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
@@ -749,7 +770,8 @@
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  let analytics;
+  try { analytics = getAnalytics(app); } catch(e) { console.warn('Analytics unavailable:', e); }
   const db = getFirestore(app);
 
   // Global variables for feedback
@@ -794,6 +816,8 @@
     }
   }
 
+  window.fbStatus = document.getElementById('fbStatus');
+
   // Add feedback to Firestore
   window.addFb = async function() {
     try {
@@ -801,8 +825,11 @@
       const rating = parseInt(window.fbRating.value);
       const feedback = window.fbText.value;
 
+      window.fbStatus.style.color = '#e0a04a';
+      window.fbStatus.textContent = '';
+
       if (!feedback.trim()) {
-        alert('Please write your feedback');
+        window.fbStatus.textContent = 'Please write your feedback before submitting.';
         return;
       }
 
@@ -821,24 +848,44 @@
       window.fbText.value = '';
       window.submitBtn.disabled = false;
       window.submitBtn.textContent = 'Submit Feedback';
-      
+      window.fbStatus.style.color = '#3CB043';
+      window.fbStatus.textContent = 'Thank you — your feedback was submitted!';
+      setTimeout(() => { window.fbStatus.textContent = ''; }, 4000);
+
       await loadFb();
     } catch (error) {
       console.error('Error adding feedback:', error);
-      alert('Error submitting feedback. Please try again.');
       window.submitBtn.disabled = false;
       window.submitBtn.textContent = 'Submit Feedback';
+      window.fbStatus.style.color = '#e05a4a';
+      if (error && error.code === 'permission-denied') {
+        window.fbStatus.textContent = 'Submission blocked by the database\'s security rules. Please update Firestore rules to allow writes to the "feedback" collection.';
+      } else {
+        window.fbStatus.textContent = 'Error submitting feedback (' + (error && error.message ? error.message : 'unknown error') + '). Please try again.';
+      }
     }
   };
 
-  // Load feedback on page load
-  window.addEventListener('load', loadFb);
-
-  // Real-time listener for feedback updates
+  // Real-time listener for feedback updates (also fires immediately on load,
+  // so we don't need a separate window 'load' listener — that was causing
+  // every feedback item to render twice on refresh)
   const feedbacksRef = collection(db, 'feedback');
   const q = query(feedbacksRef, orderBy('timestamp', 'desc'));
   onSnapshot(q, () => {
     loadFb();
+  }, (error) => {
+    console.error('Realtime feedback listener error:', error);
+    window.fbList.innerHTML = '<p style="color: #8B93A6;">Unable to connect to the feedback service right now.</p>';
+  });
+</script>
+<script>
+  // If the Firebase module above fails to load (blocked network, ad-blocker,
+  // offline preview, etc.) the page still works — Submit just shows a
+  // friendly message instead of throwing "addFb is not defined".
+  window.addEventListener('error', function(e){
+    if (e && e.message && /addFb|firebase/i.test(e.message)) {
+      console.warn('Feedback service failed to initialize:', e.message);
+    }
   });
 </script>
 
