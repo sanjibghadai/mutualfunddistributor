@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +75,7 @@
     color:#ffffff;
     letter-spacing:.04em;
     margin-top:2px;
-}
+	}
 
   .nav-links{display:flex;align-items:center;gap:34px}
   .nav-links a{
@@ -353,6 +352,61 @@
   .feedback-item .text{color:#c9c3b0;font-size:13px;margin-top:8px;line-height:1.6}
   .feedback-item .timestamp{font-size:11px;color:#666;margin-top:8px}
 
+  /* ===== Calculators ===== */
+  #calculators{background:var(--paper-dim)}
+  .calc-tabs{
+    display:flex;gap:8px;max-width:560px;margin:0 auto 32px;
+    background:var(--card-bg);border:1px solid var(--rule);border-radius:4px;padding:6px;
+  }
+  .calc-tab{
+    flex:1;text-align:center;padding:12px 10px;cursor:pointer;border:0;background:transparent;
+    color:var(--slate);font-family:inherit;font-weight:600;font-size:13.5px;letter-spacing:.04em;
+    text-transform:uppercase;border-radius:3px;transition:.25s;
+  }
+  .calc-tab.active{background:var(--gold);color:var(--ink)}
+  .calc-panel{display:none;max-width:980px;margin:0 auto}
+  .calc-panel.active{display:block}
+  .calc-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:40px;
+    background:var(--card-bg);border:1px solid var(--rule);border-radius:6px;padding:36px;
+  }
+  .calc-field{margin-bottom:26px}
+  .calc-field label{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:13.5px;color:#c9c3b0;margin-bottom:10px;letter-spacing:.02em;
+  }
+  .calc-field label .calc-val{color:var(--gold);font-weight:600;font-family:'Playfair Display',serif;font-size:15px}
+  .calc-field input[type="range"]{
+    width:100%;accent-color:var(--gold);height:4px;cursor:pointer;
+  }
+  .calc-field input[type="number"]{
+    width:100%;padding:10px 12px;background:var(--ink);border:1px solid var(--rule);
+    border-radius:4px;color:#c9c3b0;font-family:inherit;font-size:14px;margin-top:8px;
+  }
+  .calc-field input[type="number"]:focus,.calc-field input[type="range"]:focus-visible{
+    outline:none;border-color:var(--gold);
+  }
+.calc-result-box{
+  background:rgba(10,35,66,.08);
+  border:1px solid rgba(10,35,66,.25);
+  border-radius:8px;
+  padding:28px 30px;
+  margin-bottom:18px;
+}
+
+.calc-result-box .r-value{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  font-weight:700;
+  letter-spacing:.3px;
+  line-height:1.2;
+  color:#0A2342;
+}
+
+  @media (max-width:760px){
+    .calc-grid{grid-template-columns:1fr;gap:8px;padding:26px}
+  }
+
   @media (max-width:600px){
     section{padding:56px 0}
     .hero{padding:64px 0 56px}
@@ -378,6 +432,7 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
+      <a href="#calculators">Calculators</a>
       <a href="#contact" class="nav-cta">Contact</a>
 	  <a href="#feedback">Feedback</a>
     </div>
@@ -390,6 +445,7 @@
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
+    <a href="#calculators">Calculators</a>
     <a href="#contact">Contact</a>
   </div>
 </header>
@@ -438,16 +494,16 @@
       <p>A complete set of tools to grow, protect, and structure your money — chosen based on your goals, not a one-size-fits-all product.</p>
     </div>
     <div class="card-grid">
-      <div class="card"><i class="fas fa-chart-line"></i><h3>Mutual Funds</h3><p>Equity, debt, and hybrid funds matched to your risk profile and time horizon.</p></div>
-      <div class="card"><i class="fas fa-piggy-bank"></i><h3>SIP Planning</h3><p>Systematic Investment Plans that build wealth through disciplined, regular investing.</p></div>
-      <div class="card"><i class="fas fa-money-check-dollar"></i><h3>SWP</h3><p>Systematic Withdrawal Plan — a steady income stream from your existing investments.</p></div>
-      <div class="card"><i class="fas fa-right-left"></i><h3>STP</h3><p>Systematic Transfer Plan — move money between funds in a controlled, gradual way.</p></div>
-      <div class="card"><i class="fas fa-user-shield"></i><h3>Term Insurance</h3><p>Pure protection cover to secure your family's finances against the unexpected.</p></div>
-      <div class="card"><i class="fas fa-heartbeat"></i><h3>Health Insurance</h3><p>Coverage against rising medical costs for you and your dependents.</p></div>
-      <div class="card"><i class="fas fa-file-invoice-dollar"></i><h3>Tax Saving</h3><p>ELSS and other instruments structured to reduce your tax liability efficiently.</p></div>
-      <div class="card"><i class="fas fa-umbrella"></i><h3>Retirement Planning</h3><p>A corpus built well ahead of time, so retirement is a choice, not a worry.</p></div>
-      <div class="card"><i class="fas fa-graduation-cap"></i><h3>Child Education Planning</h3><p>Dedicated savings tracks for school, college, and higher education costs.</p></div>
-      <div class="card"><i class="fas fa-bullseye"></i><h3>Goal-Based Planning</h3><p>Every investment tied to a specific, named goal — and tracked against it.</p></div>
+      <div class="card service-click"><i class="fas fa-chart-line"></i><h3>Mutual Funds</h3><p>Equity, debt, and hybrid funds matched to your risk profile and time horizon.</p></div>
+      <div class="card service-click"><i class="fas fa-piggy-bank"></i><h3>SIP Planning</h3><p>Systematic Investment Plans that build wealth through disciplined, regular investing.</p></div>
+      <div class="card service-click"><i class="fas fa-money-check-dollar"></i><h3>SWP</h3><p>Systematic Withdrawal Plan — a steady income stream from your existing investments.</p></div>
+      <div class="card service-click"><i class="fas fa-right-left"></i><h3>STP</h3><p>Systematic Transfer Plan — move money between funds in a controlled, gradual way.</p></div>
+      <div class="card service-click"><i class="fas fa-user-shield"></i><h3>Term Insurance</h3><p>Pure protection cover to secure your family's finances against the unexpected.</p></div>
+      <div class="card service-click"><i class="fas fa-heartbeat"></i><h3>Health Insurance</h3><p>Coverage against rising medical costs for you and your dependents.</p></div>
+      <div class="card service-click"><i class="fas fa-file-invoice-dollar"></i><h3>Tax Saving</h3><p>ELSS and other instruments structured to reduce your tax liability efficiently.</p></div>
+      <div class="card service-click"><i class="fas fa-umbrella"></i><h3>Retirement Planning</h3><p>A corpus built well ahead of time, so retirement is a choice, not a worry.</p></div>
+      <div class="card service-click"><i class="fas fa-graduation-cap"></i><h3>Child Education Planning</h3><p>Dedicated savings tracks for school, college, and higher education costs.</p></div>
+      <div class="card service-click"><i class="fas fa-bullseye"></i><h3>Goal-Based Planning</h3><p>Every investment tied to a specific, named goal — and tracked against it.</p></div>
     </div>
   </div>
 </section>
@@ -466,6 +522,160 @@
     </div>
   </div>
 </section>
+
+<section id="calculators">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Plan Your Numbers</span>
+      <h2>SIP &amp; SWP Calculator</h2>
+      <p>Estimate how your investments could grow with a Systematic Investment Plan, or how long a Systematic Withdrawal Plan could sustain a regular income.</p>
+    </div>
+
+    <div class="calc-tabs">
+      <button class="calc-tab active" id="tabSip" onclick="showCalc('sip')">SIP Calculator</button>
+      <button class="calc-tab" id="tabSwp" onclick="showCalc('swp')">SWP Calculator</button>
+    </div>
+
+    <!-- SIP -->
+    <div class="calc-panel active" id="panelSip">
+      <div class="calc-grid">
+        <div>
+          <div class="calc-field">
+            <label>Monthly Investment <span class="calc-val" id="sipAmountVal">₹5,000</span></label>
+            <input type="range" id="sipAmount" min="500" max="200000" step="500" value="5000" oninput="calcSIP()">
+          </div>
+          <div class="calc-field">
+            <label>Investment Period <span class="calc-val" id="sipYearsVal">10 yrs</span></label>
+            <input type="range" id="sipYears" min="1" max="40" step="1" value="10" oninput="calcSIP()">
+          </div>
+          <div class="calc-field">
+            <label>Expected Annual Return <span class="calc-val" id="sipRateVal">12%</span></label>
+            <input type="range" id="sipRate" min="1" max="30" step="0.5" value="12" oninput="calcSIP()">
+          </div>
+        </div>
+        <div class="calc-results">
+          <div class="calc-result-box"><div class="r-label">Total Invested</div><div class="r-value" id="sipInvested">₹6,00,000</div></div>
+          <div class="calc-result-box"><div class="r-label">Estimated Returns</div><div class="r-value" id="sipReturns">₹5,61,695</div></div>
+          <div class="calc-result-box primary"><div class="r-label">Maturity Value</div><div class="r-value" id="sipMaturity">₹11,61,695</div></div>
+        </div>
+      </div>
+      <p class="calc-disclaimer">SIP returns are compounded monthly on the assumed rate above. This is an illustrative estimate, not a guarantee — actual mutual fund returns are market-linked and may vary.</p>
+    </div>
+
+    <!-- SWP -->
+    <div class="calc-panel" id="panelSwp">
+      <div class="calc-grid">
+        <div>
+          <div class="calc-field">
+            <label>Total Investment <span class="calc-val" id="swpCorpusVal">₹10,00,000</span></label>
+            <input type="range" id="swpCorpus" min="50000" max="20000000" step="50000" value="1000000" oninput="calcSWP()">
+          </div>
+          <div class="calc-field">
+            <label>Monthly Withdrawal <span class="calc-val" id="swpWithdrawalVal">₹8,000</span></label>
+            <input type="range" id="swpWithdrawal" min="500" max="500000" step="500" value="8000" oninput="calcSWP()">
+          </div>
+          <div class="calc-field">
+            <label>Expected Annual Return <span class="calc-val" id="swpRateVal">8%</span></label>
+            <input type="range" id="swpRate" min="1" max="30" step="0.5" value="8" oninput="calcSWP()">
+          </div>
+          <div class="calc-field">
+            <label>Withdrawal Period <span class="calc-val" id="swpYearsVal">15 yrs</span></label>
+            <input type="range" id="swpYears" min="1" max="40" step="1" value="15" oninput="calcSWP()">
+          </div>
+        </div>
+        <div class="calc-results">
+          <div class="calc-result-box"><div class="r-label">Total Withdrawn</div><div class="r-value" id="swpWithdrawn">₹14,40,000</div></div>
+          <div class="calc-result-box"><div class="r-label">Final Balance</div><div class="r-value" id="swpFinal">₹—</div></div>
+          <div class="calc-result-box primary"><div class="r-label">Corpus Status</div><div class="r-value" id="swpStatus">—</div></div>
+        </div>
+      </div>
+      <p class="calc-disclaimer">This estimate assumes withdrawals happen monthly while the remaining balance keeps earning the assumed return. If the corpus depletes before the chosen period ends, the calculator shows the month it runs out. Illustrative only — not a guarantee of actual fund performance.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  function fmtINR(n){
+    n = Math.round(n);
+    if(!isFinite(n)) n = 0;
+    return '₹' + n.toLocaleString('en-IN');
+  }
+
+  function showCalc(which){
+    document.getElementById('tabSip').classList.toggle('active', which==='sip');
+    document.getElementById('tabSwp').classList.toggle('active', which==='swp');
+    document.getElementById('panelSip').classList.toggle('active', which==='sip');
+    document.getElementById('panelSwp').classList.toggle('active', which==='swp');
+  }
+
+  function calcSIP(){
+    const amount = parseFloat(document.getElementById('sipAmount').value);
+    const years = parseFloat(document.getElementById('sipYears').value);
+    const rate = parseFloat(document.getElementById('sipRate').value);
+
+    document.getElementById('sipAmountVal').textContent = fmtINR(amount);
+    document.getElementById('sipYearsVal').textContent = years + ' yrs';
+    document.getElementById('sipRateVal').textContent = rate + '%';
+
+    const n = years * 12;
+    const i = rate / 100 / 12;
+    let maturity;
+    if(i === 0){
+      maturity = amount * n;
+    } else {
+      maturity = amount * ((Math.pow(1+i, n) - 1) / i) * (1+i);
+    }
+    const invested = amount * n;
+    const returns = maturity - invested;
+
+    document.getElementById('sipInvested').textContent = fmtINR(invested);
+    document.getElementById('sipReturns').textContent = fmtINR(returns);
+    document.getElementById('sipMaturity').textContent = fmtINR(maturity);
+  }
+
+  function calcSWP(){
+    const corpus = parseFloat(document.getElementById('swpCorpus').value);
+    const withdrawal = parseFloat(document.getElementById('swpWithdrawal').value);
+    const rate = parseFloat(document.getElementById('swpRate').value);
+    const years = parseFloat(document.getElementById('swpYears').value);
+
+    document.getElementById('swpCorpusVal').textContent = fmtINR(corpus);
+    document.getElementById('swpWithdrawalVal').textContent = fmtINR(withdrawal);
+    document.getElementById('swpRateVal').textContent = rate + '%';
+    document.getElementById('swpYearsVal').textContent = years + ' yrs';
+
+    const months = years * 12;
+    const i = rate / 100 / 12;
+    let balance = corpus;
+    let withdrawn = 0;
+    let depletedAt = -1;
+
+    for(let m=1; m<=months; m++){
+      balance = balance * (1+i) - withdrawal;
+      withdrawn += withdrawal;
+      if(balance <= 0 && depletedAt === -1){
+        depletedAt = m;
+        balance = 0;
+        break;
+      }
+    }
+
+    document.getElementById('swpWithdrawn').textContent = fmtINR(withdrawn);
+    document.getElementById('swpFinal').textContent = fmtINR(balance);
+
+    const statusEl = document.getElementById('swpStatus');
+    if(depletedAt > -1){
+      const yrs = Math.floor(depletedAt/12);
+      const mos = depletedAt % 12;
+      statusEl.textContent = `Depletes in ~${yrs}y ${mos}m`;
+    } else {
+      statusEl.textContent = 'Sustains full period';
+    }
+  }
+
+  calcSIP();
+  calcSWP();
+</script>
 
 <section id="contact" class="contact">
   <div class="wrap">
@@ -652,5 +862,29 @@
   });
 </script>
 
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+const map={'Mutual Funds': 'Diversified investment solutions tailored to your goals, risk profile, and investment horizon.', 'SIP Planning': 'Disciplined monthly investing to build long-term wealth through rupee-cost averaging.', 'SWP': 'Generate regular income by withdrawing a fixed amount from your mutual fund investments.', 'STP': 'Transfer investments gradually between funds to reduce market timing risk.', 'Term Insurance': 'Financial protection for your family with affordable life cover.', 'Health Insurance': 'Comprehensive medical coverage for hospitalization and healthcare expenses.', 'Fixed Deposits': 'Safe investment options with predictable returns.', 'NPS': 'Retirement planning through the National Pension System.', 'Tax Planning': 'Tax-efficient investment strategies under applicable laws.'};
+document.querySelectorAll('.card.service-click').forEach(c=>{
+ c.style.cursor='pointer';
+ c.onclick=()=>{
+ let t=c.querySelector('h3')?.textContent.trim();
+ let m=document.getElementById('serviceModal');
+ document.getElementById('smTitle').textContent=t;
+ document.getElementById('smBody').textContent=map[t]||c.querySelector('p').textContent;
+ m.style.display='flex';
+ };
+});
+document.getElementById('smClose').onclick=()=>serviceModal.style.display='none';
+serviceModal.onclick=e=>{if(e.target===serviceModal)serviceModal.style.display='none';}
+});
+</script>
+<style>
+#serviceModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;z-index:9999}
+#serviceModal .box{background:#fff;max-width:500px;width:90%;padding:24px;border-radius:12px;position:relative}
+#smClose{position:absolute;right:14px;top:8px;font-size:28px;cursor:pointer}
+</style>
+<div id="serviceModal"><div class="box"><span id="smClose">&times;</span><h2 id="smTitle"></h2><p id="smBody"></p></div></div>
 </body>
 </html>
